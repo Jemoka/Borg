@@ -6,6 +6,8 @@ alias c="clear"
 alias l="ls"
 alias vim="nvim"
 
+
+export $ZPLUG_HOME ~/.zplug/
 source ~/.zplug/init.zsh
 # Plugins!
 zplug romkatv/powerlevel10k, as:theme, depth:1
