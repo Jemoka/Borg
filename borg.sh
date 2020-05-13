@@ -21,49 +21,140 @@ printf "\n"
 if [[ $mainmenuinput != "y" ]]; then 
     exit 1
 fi
+echo
 
 echo "Alrighty, buckle up, because this is going to be fun!"
 echo "Hiding cursor..."
 tput civis
 echo "Defining spinner..."
-spinner() {
-    local i sp n
-    sp='/-\|'
-    n=${#sp}
-    printf ' '
-    while sleep 0.1; do
-        printf "%s\b" "${sp:i++%n:1}"
-    done
+function shutdown() {
+  tput cnorm # reset cursor
+}
+trap shutdown EXIT
+
+function cursorBack() {
+  echo -en "\033[$1D"
 }
 
+function spinner() {
+  # make sure we use non-unicode character type locale 
+  # (that way it works for any locale as long as the font supports the characters)
+  local LC_CTYPE=C
+
+  local pid=$1 # Process Id of the previous running command
+
+  case 11 in
+  0)
+    local spin='⠁⠂⠄⡀⢀⠠⠐⠈'
+    local charwidth=3
+    ;;
+  1)
+    local spin='-\|/'
+    local charwidth=1
+    ;;
+  2)
+    local spin="▁▂▃▄▅▆▇█▇▆▅▄▃▂▁"
+    local charwidth=3
+    ;;
+  3)
+    local spin="▉▊▋▌▍▎▏▎▍▌▋▊▉"
+    local charwidth=3
+    ;;
+  4)
+    local spin='←↖↑↗→↘↓↙'
+    local charwidth=3
+    ;;
+  5)
+    local spin='▖▘▝▗'
+    local charwidth=3
+    ;;
+  6)
+    local spin='┤┘┴└├┌┬┐'
+    local charwidth=3
+    ;;
+  7)
+    local spin='◢◣◤◥'
+    local charwidth=3
+    ;;
+  8)
+    local spin='◰◳◲◱'
+    local charwidth=3
+    ;;
+  9)
+    local spin='◴◷◶◵'
+    local charwidth=3
+    ;;
+  10)
+    local spin='◐◓◑◒'
+    local charwidth=3
+    ;;
+  11)
+    local spin='⣾⣽⣻⢿⡿⣟⣯⣷'
+    local charwidth=3
+    ;;
+  esac
+
+  local i=0
+  tput civis # cursor invisible
+  while kill -0 $pid 2>/dev/null; do
+    local i=$(((i + $charwidth) % ${#spin}))
+    printf "%s" "${spin:$i:$charwidth}"
+
+    cursorBack 1
+    sleep .1
+  done
+  tput cnorm
+  wait $pid # capture exit code
+  return $?
+}
 clear
-
+echo
 echo "Chapter 0: setting up"
+echo "======================"
 echo -n 'Doing the folder... '
-spinner &
-
 cd ~
 rm -rdf .borgtemp
 mkdir .borgtemp
 cd .borgtemp
 echo -e "\rDoing the folder... Done."
-echo -n "Writing coloured terminal definition..."
-spinner &
+echo -n "Writing coloured terminal definition... "
 echo "xterm-256color-italic|xterm with 256 colors and italic,
   sitm=\E[3m, ritm=\E[23m,
   use=xterm-256color," > xterm-256color-italic.terminfo
-echo -e "\rWriting coloured terminal definition... Done."
 tic xterm-256color-italic.terminfo
+echo -e "\rWriting coloured terminal definition... Done."
+clear
+echo
 echo "Chapter 1: brew"
-echo -n "Doing the, well, brew " 
-spinner &
-# TODO: uncomment this on production
-#echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-echo -e "\rDoing the, well, brew... Done."
-
-kill "$!" # kill the spinner
-printf '\n'
+echo "================"
+if hash brew 2>/dev/null; then
+    echo "Welp, somebody installed brew already. Let's press on then."
+else
+    echo -n "Okey, I am passing the mic to the brew installer. Follow any instructions." 
+    # TODO: uncomment this on production
+    echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    spinner $!
+    echo -e "\rDoing the, well, brew... Done."
+fi
+clear
+echo
+echo "Chapter 2: brewing packages"
+echo "============================"
+echo -n "Installing tmux, mosh and nvim "
+(brew install tmux mosh nvim) 2>/dev/null &
+spinner $!
+wait $!
+echo -e "\rInstalling tmux, mosh and nvim Done."
 tput cnorm
+clear
+echo
+echo "Borg v0.0.1. We assimilated."
+echo "=========================================================="
+echo "It may be a good idea to restart."
+echo "Brought to you by @jemoka"
+
+#sleep 10 &
+#spinner $!; wait $!
 
 
 
