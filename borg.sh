@@ -120,8 +120,8 @@ echo -e "\rDoing the folder... Done."
 echo -n "Writing coloured terminal definition... "
 echo "xterm-256color-italic|xterm with 256 colors and italic,
   sitm=\E[3m, ritm=\E[23m,
-  use=xterm-256color," > xterm-256color-italic.terminfo
-tic xterm-256color-italic.terminfo
+  use=xterm-256color," >> xterm-256color-italic.terminfo
+/usr/local/bin/zsh -i -c tic cd ~/.borgtemp/xterm-256color-italic.terminfo &
 echo -e "\rWriting coloured terminal definition... Done."
 clear
 echo
@@ -221,7 +221,7 @@ wait $!
 echo -e "\rSourcing tpm plugins... Done."
 clear
 echo
-echo "Borg v0.0.1. We assimilated."
+echo "Borg v0.0.1. We assimilated (your shell)."
 echo "=========================================================="
 echo "@@@ Now, its your turn @@@"
 echo "It is a good idea to restart this shell session."
