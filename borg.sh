@@ -199,7 +199,7 @@ nvim -c "PlugInstall" &> /dev/null &
 spinner $!
 wait $!
 echo -e "\rInstalling plugins... Done."
-echo -n "Installing neovim Python pkg... "
+echo -n "Installing neovim Python3 pkg... "
 /usr/local/bin/python3 -m pip install neovim &> /dev/null &
 spinner $!
 wait $!
