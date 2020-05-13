@@ -159,7 +159,7 @@ echo
 echo "Chapter 4: copying config files"
 echo "================================"
 echo -n "Copying the config profiles... "
-(cp Borg/src/.tmux.conf ~/; cp Borg/src/.zprofile ~/; cp Borg/src/.zshrc ~/; cp Borg/src/.tmux.conf ~/; mkdir .tmux; mkdir ~/.config; mkdir ~/.config/nvim; cp Borg/src/nvim/init.vim ~/.config/nvim/; cp -r Borg/src/nvim/UltiSnips ~/.config/nvim/; mkdir ~/.tmux/; cp Borg/src/airline.conf ~/.tmux/) &> /dev/null &
+(cp Borg/src/.tmux.conf ~/; cp Borg/src/.zprofile ~/; cp Borg/src/.zshrc ~/; cp Borg/src/.tmux.conf ~/; mkdir .tmux; mkdir ~/.config; mkdir ~/.config/nvim; cp Borg/src/nvim/init.vim ~/.config/nvim/; cp -r Borg/src/nvim/UltiSnips ~/.config/nvim/; mkdir ~/.tmux/; cp Borg/src/airline.conf ~/.tmux/; cp Borg/src/.p10k.zsh ~/) &> /dev/null &
 spinner $!
 wait $!
 echo -e "\rCopying the config profiles... Done."
