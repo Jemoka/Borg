@@ -141,7 +141,7 @@ echo
 echo "Chapter 2: brewing packages"
 echo "============================"
 echo -n "Installing tmux, mosh, zsh, git, and nvim... "
-(brew install tmux mosh nvim zsh git) 2>/dev/null &
+(brew install tmux mosh nvim zsh git) &>/dev/null &
 spinner $!
 wait $!
 echo -e "\rInstalling tmux, mosh, zsh, git, and nvim... Done."
@@ -150,11 +150,20 @@ clear
 echo
 echo "Chapter 3: downloading config files repo"
 echo "========================================="
-echo "Using git to clone https://github.com/Jemoka/Borg... "
-git clone https://github.com/Jemoka/Borg 2>/dev/null &
+echo -n "Using git to clone the Borg src... "
+git clone https://github.com/Jemoka/Borg --quiet &> /dev/null &
 spinner $!
 wait $!
-echo "\rUsing git to clone https://github.com/Jemoka/Borg... Done."
+echo -e "\rUsing git to clone the Borg src... Done."
+clear
+echo
+echo "Chapter 4: copying config files"
+echo "================================"
+echo -n "Copying the config profiles... "
+(cp Borg/src/.tmux.conf ~/; cp Borg/src/.zprofile ~/; cp Borg/src/.zshrc ~/; cp Borg/src/.tmux.conf ~/; mkdir .tmux; mkdir ~/.config; mkdir ~/.config/nvim; cp Borg/src/nvim/init.vim ~/.config/nvim/; cp -r Borg/src/nvim/UltiSnips ~/.config/nvim/) &> /dev/null &
+spinner $!
+wait $!
+echo -e "\rCopying the config profiles... Done."
 clear
 echo
 echo "Borg v0.0.1. We assimilated."
