@@ -139,11 +139,11 @@ clear
 echo
 echo "Chapter 2: brewing packages"
 echo "============================"
-echo -n "Installing tmux, mosh, zsh, git, and nvim... "
-(brew install tmux mosh nvim tmuxinator zsh git) &>/dev/null &
+echo -n "Installing tmux, mosh, zsh, git, python3, and nvim... "
+(brew install tmux mosh nvim tmuxinator zsh git python3) &>/dev/null &
 spinner $!
 wait $!
-echo -e "\rInstalling tmux, mosh, zsh, git, and nvim... Done."
+echo -e "\rInstalling tmux, mosh, zsh, git, python3, and nvim... Done."
 tput cnorm
 clear
 echo
@@ -180,7 +180,7 @@ cd ~/.borgtemp
 echo -e "\rPatching zplug... Done."
 echo -n "Running zplug install... "
 cd ~
-/usr/local/bin/zsh -i -c echo; (zplug install > /dev/null) &> /dev/null &
+/usr/local/bin/zsh -i -c echo; (zplug install &> /dev/null) &> /dev/null &
 spinner $!
 wait $!
 echo -e "\rRunning zplug install... Done."
@@ -198,9 +198,17 @@ echo -n "Installing plugins... "
 nvim -c "PlugInstall" &> /dev/null &
 spinner $!
 wait $!
+echo -e "\rInstalling plugins... Done."
+echo -n "Installing neovim Python pkg... "
+/usr/local/bin/python3 -m pip install neovim &> /dev/null &
+spinner $!
+wait $!
+echo -e "\rInstalling neovim Python pkg... Done."
+clear
+echo
 echo "Borg v0.0.1. We assimilated."
 echo "=========================================================="
-echo "It may be a good idea to restart."
+echo "It is a good idea to restart this shell session."
 echo "Brought to you by @jemoka"
 
 #sleep 10 &
