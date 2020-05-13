@@ -47,12 +47,19 @@ rm -rdf .borgtemp
 mkdir .borgtemp
 cd .borgtemp
 echo -e "\rDoing the folder... Done."
-echo -n 'Writing coloured terminal definition... '
+echo -n "Writing coloured terminal definition..."
+spinner &
 echo "xterm-256color-italic|xterm with 256 colors and italic,
   sitm=\E[3m, ritm=\E[23m,
   use=xterm-256color," > xterm-256color-italic.terminfo
 echo -e "\rWriting coloured terminal definition... Done."
 tic xterm-256color-italic.terminfo
+echo "Chapter 1: brew"
+echo -n "Doing the, well, brew " 
+spinner &
+# TODO: uncomment this on production
+#echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+echo -e "\rDoing the, well, brew... Done."
 
 kill "$!" # kill the spinner
 printf '\n'
