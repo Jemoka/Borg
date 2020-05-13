@@ -179,7 +179,9 @@ spinner $!
 wait $!
 echo -e "\rRunning zplug install... Done."
 echo -n "Patching zplug... "
-sed -i 's/compinit -d "$ZPLUG_HOME/compinit -u -d "$ZPLUG_HOME/g' ~/.zplug/base/core/load.zsh
+cd ~/.zplug/base/core/
+sed -i '' 's/compinit -d/compinit -u -d/' load.zsh
+cd ~/.borgtemp
 echo -e "\rPatching zplug... Done."
 clear
 echo
