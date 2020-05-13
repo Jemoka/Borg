@@ -8,6 +8,11 @@ alias vim="nvim"
 
 
 export ZPLUG_HOME=~/.zplug/
+export ZPLUG_REPOS=~/.zplug/repos/ 
+export ZPLUG_LOADFILE=~/.zplug/packages.zsh
+export ZPLUG_BIN=~/.zplug/bin
+export ZPLUG_CACHE_DIR=~/.zplug/cache
+export ZPLUG_ERROR_LOG=~/.zplug/.error_log
 source ~/.zplug/init.zsh
 # Plugins!
 zplug romkatv/powerlevel10k, as:theme, depth:1
