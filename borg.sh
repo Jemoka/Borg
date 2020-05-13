@@ -141,7 +141,7 @@ echo
 echo "Chapter 2: brewing packages"
 echo "============================"
 echo -n "Installing tmux, mosh, zsh, git, and nvim... "
-(brew install tmux mosh nvim zsh git) &>/dev/null &
+(brew install tmux mosh nvim tmuxinator zsh git) &>/dev/null &
 spinner $!
 wait $!
 echo -e "\rInstalling tmux, mosh, zsh, git, and nvim... Done."
