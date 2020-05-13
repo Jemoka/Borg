@@ -121,7 +121,11 @@ echo -n "Writing coloured terminal definition... "
 echo "xterm-256color-italic|xterm with 256 colors and italic,
   sitm=\E[3m, ritm=\E[23m,
   use=xterm-256color," >> xterm-256color-italic.terminfo
-/usr/local/bin/zsh -i -c tic ~/.borgtemp/xterm-256color-italic.terminfo &
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    /bin/zsh -c "tic xterm-256color-italic.terminfo" 
+    /usr/local/bin/zsh -c "tic xterm-256color-italic.terminfo" 
+else
+    /usr/local/bin/zsh -c "tic xterm-256color-italic.terminfo" 
 echo -e "\rWriting coloured terminal definition... Done."
 clear
 echo
@@ -179,7 +183,9 @@ cd ~/.zplug/base/core/
 sed -i '' 's/compinit -d/compinit -u -d/' load.zsh
 cd ~/.borgtemp
 echo -e "\rPatching zplug... Done."
-echo -n "Running zplug install... "
+echo "Running zplug install..."
+echo
+echo -n "@@DO NOT STOP BORG AFTER THIS COMPLETES@@"
 cd ~
 /usr/local/bin/zsh -i -c echo; (zplug install &> /dev/null) &> /dev/null &
 spinner $!
