@@ -180,7 +180,7 @@ cd ~/.borgtemp
 echo -e "\rPatching zplug... Done."
 echo -n "Running zplug install... "
 cd ~
-/usr/local/bin/zsh -i -c echo; zplug install &> /dev/null &
+/usr/local/bin/zsh -i -c echo; (zplug install > /dev/null) &> /dev/null &
 spinner $!
 wait $!
 echo -e "\rRunning zplug install... Done."
