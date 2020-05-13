@@ -174,7 +174,7 @@ spinner $!
 wait $!
 echo -e "\rCloning zplug... Done."
 echo -n "Running zplug install... "
-zplug install &> /dev/null &
+/usr/local/bin/zsh zplug install &> /dev/null &
 spinner $!
 wait $!
 echo -e "\rRunning zplug install... Done."
