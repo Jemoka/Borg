@@ -6,10 +6,7 @@ alias c="clear"
 alias l="ls"
 alias vim="nvim"
 
-export ZPLUG_VERSION="$(ls /usr/local/Cellar/zplug | head -n 1)"
-export ZPLUG_HOME="/usr/local/Cellar/zplug/"$ZPLUG_VERSION"/"
-# zplug settings
-source $ZPLUG_HOME/init.zsh
+source ~/.zplug/init.zsh
 # Plugins!
 zplug romkatv/powerlevel10k, as:theme, depth:1
 zplug zsh-users/zsh-autosuggestions
