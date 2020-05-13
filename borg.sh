@@ -10,7 +10,6 @@ echo "Action Plan Today:
 [ ] Configure coloured xterm
 [ ] Install Brew
 [ ] Install tmux, nvim, mosh
-[ ] Install Python3 and anaconda
 [ ] Configure all that we installed
 "
 
@@ -141,7 +140,7 @@ echo
 echo "Chapter 2: brewing packages"
 echo "============================"
 echo -n "Installing tmux, mosh, zsh, git, and nvim... "
-(brew install tmux mosh nvim tmuxinator zsh git) &>/dev/null &
+(brew install tmux mosh nvim tmuxinator zsh zplug git) &>/dev/null &
 spinner $!
 wait $!
 echo -e "\rInstalling tmux, mosh, zsh, git, and nvim... Done."
@@ -160,10 +159,19 @@ echo
 echo "Chapter 4: copying config files"
 echo "================================"
 echo -n "Copying the config profiles... "
-(cp Borg/src/.tmux.conf ~/; cp Borg/src/.zprofile ~/; cp Borg/src/.zshrc ~/; cp Borg/src/.tmux.conf ~/; mkdir .tmux; mkdir ~/.config; mkdir ~/.config/nvim; cp Borg/src/nvim/init.vim ~/.config/nvim/; cp -r Borg/src/nvim/UltiSnips ~/.config/nvim/) &> /dev/null &
+(cp Borg/src/.tmux.conf ~/; cp Borg/src/.zprofile ~/; cp Borg/src/.zshrc ~/; cp Borg/src/.tmux.conf ~/; mkdir .tmux; mkdir ~/.config; mkdir ~/.config/nvim; cp Borg/src/nvim/init.vim ~/.config/nvim/; cp -r Borg/src/nvim/UltiSnips ~/.config/nvim/; mkdir ~/.tmux/; cp Borg/src/airline.conf ~/.tmux/) &> /dev/null &
 spinner $!
 wait $!
 echo -e "\rCopying the config profiles... Done."
+clear
+echo
+echo "Chapter 5: zsh plugins"
+echo "======================="
+echo -n "Running zplug install... "
+zplug install &> /dev/null &
+spinner $!
+wait $!
+echo -e "\rRunning zplug install... Done."
 clear
 echo
 echo "Borg v0.0.1. We assimilated."
