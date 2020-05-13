@@ -179,7 +179,8 @@ sed -i '' 's/compinit -d/compinit -u -d/' load.zsh
 cd ~/.borgtemp
 echo -e "\rPatching zplug... Done."
 echo -n "Running zplug install... "
-/usr/local/bin/zsh -i -c cd ~; zplug install &> /dev/null &
+cd ~
+/usr/local/bin/zsh -i -c zplug install &> /dev/null &
 spinner $!
 wait $!
 echo -e "\rRunning zplug install... Done."

@@ -19,6 +19,9 @@ zplug romkatv/powerlevel10k, as:theme, depth:1
 zplug zsh-users/zsh-autosuggestions
 zplug "plugins/git", from:oh-my-zsh
 # Fire!
+if ! zplug check; then
+    zplug install
+fi
 zplug load
 
 ZSH_AUTOSUGGEST_STRATEGY="completion"
