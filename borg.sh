@@ -121,7 +121,7 @@ echo -n "Writing coloured terminal definition... "
 echo "xterm-256color-italic|xterm with 256 colors and italic,
   sitm=\E[3m, ritm=\E[23m,
   use=xterm-256color," >> xterm-256color-italic.terminfo
-/usr/local/bin/zsh -i -c tic cd ~/.borgtemp/xterm-256color-italic.terminfo &
+/usr/local/bin/zsh -i -c tic ~/.borgtemp/xterm-256color-italic.terminfo &
 echo -e "\rWriting coloured terminal definition... Done."
 clear
 echo
