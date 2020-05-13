@@ -20,7 +20,7 @@ zplug zsh-users/zsh-autosuggestions
 zplug "plugins/git", from:oh-my-zsh
 # Fire!
 if ! zplug check; then
-    zplug install
+    echo; zplug install
 fi
 zplug load
 
