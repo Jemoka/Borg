@@ -52,7 +52,6 @@ Plug 'lervag/vimtex'
 Plug 'ianks/vim-tsx'
 Plug 'plasticboy/vim-markdown'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'szymonmaszke/vimpyter'
 
 "#NICETIES#"
 Plug 'mtth/scratch.vim'

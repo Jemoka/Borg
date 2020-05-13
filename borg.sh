@@ -186,6 +186,21 @@ wait $!
 echo -e "\rRunning zplug install... Done."
 clear
 echo
+echo "Chapter 5: (n)vim plugins"
+echo "======================="
+echo -n "Cloning vim-plug... "
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' &> /dev/null &
+spinner $!
+wait $!
+echo -e "\rCloning vim-plug... Done."
+echo -n "Installing plugins... "
+nvim -c "PlugInstall" &> /dev/null &
+spinner $!
+wait $!
+echo -e "\rInstalling plugins... Done."
+clear
+echo
 echo "Borg v0.0.1. We assimilated."
 echo "=========================================================="
 echo "It may be a good idea to restart."
