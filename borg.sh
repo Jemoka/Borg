@@ -4,13 +4,14 @@
 
 # First things first, say hi
 clear
-echo "Borg v0.0.1. We will assimilate you (with consent though)."
-echo "=========================================================="
+echo "Borg v0.0.1. We will assimilate your zsh (with consent though)."
+echo "================================================================"
 echo "Action Plan Today:
 [ ] Configure coloured xterm
 [ ] Install Brew
 [ ] Install tmux, nvim, mosh
 [ ] Configure all that we installed
+[ ] Add powerlevel10k theme to zsh
 "
 
 echo "So, shall we do it?"
@@ -206,10 +207,30 @@ wait $!
 echo -e "\rInstalling neovim Python pkg... Done."
 clear
 echo
+echo "Chapter 6: tmux plugins"
+echo "======================="
+echo -n "Cloning tpm... "
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm &> /dev/null &
+spinner $!
+wait $!
+echo -e "\rCloning tpm... Done."
+echo -n "Sourcing tpm plugins... "
+~/.tmux/plugins/tpm/bin/install_plugins &> /dev/null &
+spinner $!
+wait $!
+echo -e "\rSourcing tpm plugins... Done."
+clear
+echo
 echo "Borg v0.0.1. We assimilated."
 echo "=========================================================="
+echo "@@@ Now, its your turn @@@"
 echo "It is a good idea to restart this shell session."
-echo "Brought to you by @jemoka"
+echo "If you are using bash, shame on you. All of the changes"
+echo "are done to zsh, because its the superior shell. Check"
+echo "zsh (at /usr/local/bin/zsh), and if you are happy with"
+echo "it, then set your login shell to zsh."
+echo "=========================================================="
+echo "Script brought to you by @jemoka"
 
 #sleep 10 &
 #spinner $!; wait $!
