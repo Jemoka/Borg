@@ -198,9 +198,6 @@ echo -n "Installing plugins... "
 nvim -c "PlugInstall" &> /dev/null &
 spinner $!
 wait $!
-echo -e "\rInstalling plugins... Done."
-clear
-echo
 echo "Borg v0.0.1. We assimilated."
 echo "=========================================================="
 echo "It may be a good idea to restart."
