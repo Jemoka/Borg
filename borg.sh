@@ -168,7 +168,7 @@ echo
 echo "Chapter 5: zsh plugins"
 echo "======================="
 echo -n "Cloning zplug... "
-export $ZPLUG_HOME ~/.zplug/
+export ZPLUG_HOME=~/.zplug/
 git clone https://github.com/zplug/zplug $ZPLUG_HOME &> /dev/null &
 spinner $!
 wait $!
