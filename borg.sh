@@ -173,16 +173,16 @@ git clone https://github.com/zplug/zplug $ZPLUG_HOME &> /dev/null &
 spinner $!
 wait $!
 echo -e "\rCloning zplug... Done."
-echo -n "Running zplug install... "
-/usr/local/bin/zsh -i -c cd ~; zplug install &> /dev/null &
-spinner $!
-wait $!
-echo -e "\rRunning zplug install... Done."
 echo -n "Patching zplug... "
 cd ~/.zplug/base/core/
 sed -i '' 's/compinit -d/compinit -u -d/' load.zsh
 cd ~/.borgtemp
 echo -e "\rPatching zplug... Done."
+echo -n "Running zplug install... "
+/usr/local/bin/zsh -i -c cd ~; zplug install &> /dev/null &
+spinner $!
+wait $!
+echo -e "\rRunning zplug install... Done."
 clear
 echo
 echo "Borg v0.0.1. We assimilated."
