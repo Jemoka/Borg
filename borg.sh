@@ -140,12 +140,21 @@ clear
 echo
 echo "Chapter 2: brewing packages"
 echo "============================"
-echo -n "Installing tmux, mosh and nvim "
-(brew install tmux mosh nvim) 2>/dev/null &
+echo -n "Installing tmux, mosh, zsh, git, and nvim... "
+(brew install tmux mosh nvim zsh git) 2>/dev/null &
 spinner $!
 wait $!
-echo -e "\rInstalling tmux, mosh and nvim Done."
+echo -e "\rInstalling tmux, mosh, zsh, git, and nvim... Done."
 tput cnorm
+clear
+echo
+echo "Chapter 3: downloading config files repo"
+echo "========================================="
+echo "Using git to clone https://github.com/Jemoka/Borg... "
+git clone https://github.com/Jemoka/Borg 2>/dev/null &
+spinner $!
+wait $!
+echo "\rUsing git to clone https://github.com/Jemoka/Borg... Done."
 clear
 echo
 echo "Borg v0.0.1. We assimilated."

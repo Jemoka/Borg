@@ -15,8 +15,6 @@ alias l="ls"
 alias vim="nvim"
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # zplug settings
 source ~/.zplug/init.zsh
 # Plugins!
@@ -46,35 +44,3 @@ if expr "$(ps -o comm= $PPID)" : '^sshd:' > /dev/null; then
   exit $?
 fi
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/houliu/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/houliu/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/houliu/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/houliu/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
-#compdef toggl
-_toggl() {
-  eval $(env COMMANDLINE="${words[1,$CURRENT]}" _TOGGL_COMPLETE=complete-zsh  toggl)
-}
-if [[ "$(basename -- ${(%):-%x})" != "_toggl" ]]; then
-  autoload -U compinit && compinit
-  compdef _toggl toggl
-fi
-#compdef toggl
-_toggl() {
-  eval $(env COMMANDLINE="${words[1,$CURRENT]}" _TOGGL_COMPLETE=complete-zsh  toggl)
-}
-if [[ "$(basename -- ${(%):-%x})" != "_toggl" ]]; then
-  autoload -U compinit && compinit
-  compdef _toggl toggl
-fi
