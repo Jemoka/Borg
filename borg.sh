@@ -109,7 +109,30 @@ function spinner() {
 }
 clear
 echo
-echo "Chapter 0: setting up"
+echo "Chapter 0: brew"
+echo "================"
+if hash brew 2>/dev/null; then
+    echo "Welp, somebody installed brew already. Let's press on then."
+else
+    echo -n "Okey, I am passing the mic to the brew installer. Follow any instructions." 
+    # TODO: uncomment this on production
+    echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    spinner $!
+    echo -e "\rDoing the, well, brew... Done."
+fi
+clear
+echo
+echo "Chapter 1: brewing packages"
+echo "============================"
+echo -n "Installing tmux, mosh, zsh, git, python3, and nvim... "
+(brew install tmux mosh nvim tmuxinator zsh git python3) &>/dev/null &
+spinner $!
+wait $!
+echo -e "\rInstalling tmux, mosh, zsh, git, python3, and nvim... Done."
+tput cnorm
+clear
+echo
+echo "Chapter 2: setting up"
 echo "======================"
 echo -n 'Doing the folder... '
 cd ~
@@ -125,29 +148,7 @@ echo "xterm-256color-italic|xterm with 256 colors and italic,
 echo -e "\rWriting coloured terminal definition... Done."
 clear
 echo
-echo "Chapter 1: brew"
-echo "================"
-if hash brew 2>/dev/null; then
-    echo "Welp, somebody installed brew already. Let's press on then."
-else
-    echo -n "Okey, I am passing the mic to the brew installer. Follow any instructions." 
-    # TODO: uncomment this on production
-    echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    spinner $!
-    echo -e "\rDoing the, well, brew... Done."
-fi
-clear
-echo
-echo "Chapter 2: brewing packages"
-echo "============================"
-echo -n "Installing tmux, mosh, zsh, git, python3, and nvim... "
-(brew install tmux mosh nvim tmuxinator zsh git python3) &>/dev/null &
-spinner $!
-wait $!
-echo -e "\rInstalling tmux, mosh, zsh, git, python3, and nvim... Done."
-tput cnorm
-clear
-echo
+
 echo "Chapter 3: downloading config files repo"
 echo "========================================="
 echo -n "Using git to clone the Borg src... "
