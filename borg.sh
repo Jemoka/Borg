@@ -43,56 +43,11 @@ function spinner() {
 
   local pid=$1 # Process Id of the previous running command
 
-  case 11 in
-  0)
-    local spin='⠁⠂⠄⡀⢀⠠⠐⠈'
-    local charwidth=3
-    ;;
-  1)
-    local spin='-\|/'
-    local charwidth=1
-    ;;
-  2)
-    local spin="▁▂▃▄▅▆▇█▇▆▅▄▃▂▁"
-    local charwidth=3
-    ;;
-  3)
-    local spin="▉▊▋▌▍▎▏▎▍▌▋▊▉"
-    local charwidth=3
-    ;;
-  4)
-    local spin='←↖↑↗→↘↓↙'
-    local charwidth=3
-    ;;
-  5)
-    local spin='▖▘▝▗'
-    local charwidth=3
-    ;;
-  6)
-    local spin='┤┘┴└├┌┬┐'
-    local charwidth=3
-    ;;
-  7)
-    local spin='◢◣◤◥'
-    local charwidth=3
-    ;;
-  8)
-    local spin='◰◳◲◱'
-    local charwidth=3
-    ;;
-  9)
-    local spin='◴◷◶◵'
-    local charwidth=3
-    ;;
-  10)
-    local spin='◐◓◑◒'
-    local charwidth=3
-    ;;
-  11)
-    local spin='⣾⣽⣻⢿⡿⣟⣯⣷'
-    local charwidth=3
-    ;;
-  esac
+  #local spin='⠁⠂⠄⡀⢀⠠⠐⠈'
+  #local charwidth=3
+
+  local spin='⣾⣽⣻⢿⡿⣟⣯⣷'
+  local charwidth=3
 
   local i=0
   tput civis # cursor invisible
@@ -237,16 +192,19 @@ echo
 echo "Borg v0.0.1. We assimilated (your shell)."
 echo "=========================================================="
 echo "@@@ Now, its your turn @@@"
-echo "## Task 1"
+echo "## Task 1 ##"
 echo "It is a good idea to restart this shell session."
+echo "If you get no color or weird display things, set your terminal"
+echo "emulator to xterm-256color-italic. In iTerm, that's in"
+echo "Settings -> Profiles -> Terminal -> Report Terminal Type."
+echo "## Task 2 ##"
+echo "When you first load, PowerLevel10k will guide you though"
+echo "the setup process of your terminal interface."
+echo "## Task 3 ##"
 echo "If you are using bash, shame on you. All of the changes"
 echo "are done to zsh, because its the superior shell. Check"
 echo "zsh (at /usr/local/bin/zsh), and if you are happy with"
 echo "it, then set your login shell to zsh."
-echo "## Task 2"
-echo "If you get no/weird color things, set your terminal"
-echo "emulator to xterm-256color-italic. In iTerm, that's in"
-echo "Settings -> Profiles -> Terminal -> Report Terminal Type."
 echo "=========================================================="
 echo "Script brought to you by @jemoka"
 echo "Beep. beep. boop."
