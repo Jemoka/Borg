@@ -27,5 +27,6 @@ Well, let's see.
     4. VimPlug and readable/configurable `init.nvim`
 4. Mosh
 
-So, in summary,
+So, in summary...
+
 ![](https://raw.githubusercontent.com/Jemoka/Borg/master/demo.png)
