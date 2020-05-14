@@ -1,4 +1,3 @@
-source ~/.p10k.zsh
 source ~/.zprofile
 
 setopt autocd
