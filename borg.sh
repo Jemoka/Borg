@@ -221,7 +221,16 @@ echo -n "Sourcing tpm plugins... "
 spinner $!
 wait $!
 echo -e "\rSourcing tpm plugins... Done."
-
+clear
+echo
+echo "Chapter 8: cleanup, cleanup"
+echo "==========================="
+echo -n "everybody everywhere... "
+cd ~
+rm -rfd ~/.borgtemp &> /dev/null &
+spinner $!
+wait $!
+echo -e "\reverybody everywhere... Done."
 clear
 echo
 echo "Borg v0.0.1. We assimilated (your shell)."
@@ -234,6 +243,7 @@ echo "zsh (at /usr/local/bin/zsh), and if you are happy with"
 echo "it, then set your login shell to zsh."
 echo "=========================================================="
 echo "Script brought to you by @jemoka"
+echo "Beep. beep. boop."
 
 #sleep 10 &
 #spinner $!; wait $!
