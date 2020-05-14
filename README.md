@@ -28,4 +28,4 @@ Well, let's see.
 4. Mosh
 
 So, in summary,
-![](demo.png)
+![](https://raw.githubusercontent.com/Jemoka/Borg/master/demo.png)
