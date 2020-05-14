@@ -190,7 +190,7 @@ echo -e "\rRunning zplug install... Done."
 clear
 echo
 echo "Chapter 6: (n)vim plugins"
-echo "======================="
+echo "========================="
 echo -n "Cloning vim-plug... "
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' &> /dev/null &
@@ -221,10 +221,6 @@ echo -n "Sourcing tpm plugins... "
 spinner $!
 wait $!
 echo -e "\rSourcing tpm plugins... Done."
-echo -n "Generating tmux theme..."
-(nvim -c "Tmuxline airline" &> /dev/null; nvim -c "TmuxlineSnapshot ~/.tmux/airline.conf" &> /dev/null) &
-spinner $!
-wait $!
 
 clear
 echo
