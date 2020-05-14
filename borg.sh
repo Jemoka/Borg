@@ -121,11 +121,7 @@ echo -n "Writing coloured terminal definition... "
 echo "xterm-256color-italic|xterm with 256 colors and italic,
   sitm=\E[3m, ritm=\E[23m,
   use=xterm-256color," >> xterm-256color-italic.terminfo
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    /bin/zsh -c "tic xterm-256color-italic.terminfo" 
-    /usr/local/bin/zsh -c "tic xterm-256color-italic.terminfo" 
-else
-    /usr/local/bin/zsh -c "tic xterm-256color-italic.terminfo" 
+/usr/local/bin/zsh -c -l "tic xterm-256color-italic.terminfo" 
 echo -e "\rWriting coloured terminal definition... Done."
 clear
 echo
@@ -193,7 +189,7 @@ wait $!
 echo -e "\rRunning zplug install... Done."
 clear
 echo
-echo "Chapter 5: (n)vim plugins"
+echo "Chapter 6: (n)vim plugins"
 echo "======================="
 echo -n "Cloning vim-plug... "
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -213,7 +209,7 @@ wait $!
 echo -e "\rInstalling neovim Python pkg... Done."
 clear
 echo
-echo "Chapter 6: tmux plugins"
+echo "Chapter 7: tmux plugins"
 echo "======================="
 echo -n "Cloning tpm... "
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm &> /dev/null &
