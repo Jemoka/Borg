@@ -8,6 +8,7 @@ None of this time should be spent configuring the nitty-gritty of zsh. None of i
 Hence, I present Borg. Making your terminal look like mine, which, honestly, I think looks pretty good.
 
 ## That Line You Are Looking For
+@@@This Works ONLY on macOS right now@@@
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Jemoka/Borg/master/borg.sh)"
 ```
